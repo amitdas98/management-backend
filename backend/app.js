@@ -68,7 +68,7 @@ app.get("/api/cards", async (req, res) => {
         if (filterStatus !== "all") {
             query.invited = filterStatus === "invited";
         }
-
+        console.log(`running the query`, query);
         const cards = await Card.find(query);
         res.status(200).json(cards);
     } catch (err) {
@@ -103,14 +103,14 @@ app.put("/api/cards/:id", async (req, res) => {
         });
     }
 });
-//changes
+
 app.get("/health", (req, res) => {
     console.log("health check");
     res.status(200).json({ message: "Server is healthy" });
 });
 
 // Start Server
-const PORT = 5002;
+const PORT = 5000;
 app.listen(PORT, () =>
     console.log(`Server running on http://localhost:${PORT}`)
 );
