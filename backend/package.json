@@ -4,8 +4,8 @@
   "description": "backend hosts to create apis for guest management ",
   "main": "app.js",
   "scripts": {
-    "start": "npm install && node app.js",
-    "build": "npm install"
+    "start": "NODE_ENV=development node ./build/app.js",
+    "build": "rm -rf build/ && tsc --build",
   },
   "author": "mailamitad98@gmail.com",
   "license": "ISC",
