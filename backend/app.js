@@ -68,7 +68,8 @@ app.get("/api/cards", async (req, res) => {
         if (filterStatus !== "all") {
             query.invited = filterStatus === "invited";
         }
-        console.log(`running the query`, query);
+
+        console.log(`running the query`, {query2: JSON.stringify(query)});
         const cards = await Card.find(query);
         res.status(200).json(cards);
     } catch (err) {
