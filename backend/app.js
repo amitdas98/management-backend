@@ -27,9 +27,9 @@ const cardSchema = new mongoose.Schema({
     serialNo: { type: Number, required: true, unique: true },
     reference: { type: String },
     location: { type: String },
-    holud: { type: String },
-    wedding: { type: String },
-    reception: { type: String },
+    holud: { type: Number },
+    wedding: { type: Number },
+    reception: { type: Number },
     telephone: { type: String },
     invited: { type: Boolean, default: false },
 });
