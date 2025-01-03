@@ -4,7 +4,7 @@
   "description": "backend hosts to create apis for guest management ",
   "main": "app.js",
   "scripts": {
-    "test": "npm start"
+   "start": "node app.js"
   },
   "author": "mailamitad98@gmail.com",
   "license": "ISC",
