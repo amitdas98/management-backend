@@ -13,9 +13,6 @@ app.use(bodyParser.json());
 // MongoDB Connection
 mongoose
     .connect(process.env.MONGODB_URI, {
-        // Use environment variable
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         dbName: "wedding", // Specify the database name
     })
     .then(() => console.log("Connected to MongoDB"))
@@ -32,6 +29,9 @@ const cardSchema = new mongoose.Schema({
     reception: { type: Number },
     telephone: { type: String },
     invited: { type: Boolean, default: false },
+    invitedHolud: { type: Boolean, default: false }, // New field
+    invitedWedding: { type: Boolean, default: false }, // New field
+    invitedReception: { type: Boolean, default: false }, // New field
 });
 
 const Card = mongoose.model("Guest", cardSchema); // Use 'Guest' to refer to the 'guests' collection
@@ -82,14 +82,14 @@ app.get("/api/cards", async (req, res) => {
 });
 
 // 2. Update Invitation Status
-app.put("/api/cards/:id", async (req, res) => {
-    const { id } = req.params;
-    const { invited } = req.body;
+app.put("update/card", async (req, res) => {
+    const { _id } = req.body;
+    const updateData = req.body;
 
     try {
-        const updatedCard = await Card.findOneAndUpdate(
-            { serialNo: id },
-            { invited },
+        const updatedCard = await Card.findByIdAndUpdate(
+            id,
+            updateData,
             { new: true }
         );
         if (!updatedCard) {
