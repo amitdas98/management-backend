@@ -91,7 +91,7 @@ app.put("/update/card", async (req, res) => {
 
     try {
         const updatedCard = await Card.findByIdAndUpdate(
-            id,
+            _id,
             updateData,
             { new: true }
         );
