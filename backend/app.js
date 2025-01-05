@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 // MongoDB Connection
 mongoose
     .connect(process.env.MONGODB_URI, {
+        // Use environment variable
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
         dbName: "wedding", // Specify the database name
     })
     .then(() => console.log("Connected to MongoDB"))
@@ -82,7 +85,7 @@ app.get("/api/cards", async (req, res) => {
 });
 
 // 2. Update Invitation Status
-app.put("update/card", async (req, res) => {
+app.put("/update/card", async (req, res) => {
     const { _id } = req.body;
     const updateData = req.body;
 
