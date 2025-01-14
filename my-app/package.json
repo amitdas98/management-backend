@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cra-template": "1.2.0",
-    "flowbite": "^2.5.2",
+    "@heroicons/react": "^2.2.0",
+    "@material-tailwind/react": "^2.1.10",
     "flowbite-react": "^0.10.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^7.1.1",
+    "react-scripts": "^5.0.1"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,7 +41,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
     "web-vitals": "^4.2.4"
   }

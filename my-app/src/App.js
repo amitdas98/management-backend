@@ -1,13 +1,20 @@
 import React from 'react';
-// change
 //import CardList from './CardList';
 //import CardListWithFilter from './CardListWithFilter';
 import CardWithDesign from './cardWithDesign';
+import TableViewGuestV1 from './tableViewGuestV1';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import StickyNavbar from './StickyNavbar.js';
+
 function App() {
   return (
     <div>
-      <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Amit's wedding management app</h1>
-      <CardWithDesign />
+      <StickyNavbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/listView" />} />
+        <Route path="/cardView" element={ <CardWithDesign />} />
+        <Route path="/listView" element={<TableViewGuestV1 />} />
+      </Routes>
     </div>
   );
 }
