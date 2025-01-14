@@ -271,7 +271,7 @@ export default function MembersTable() {
             >
               {ITEMS_PER_PAGE_OPTIONS.map((option) => (
                 <option key={option} value={option}>
-                  {option} per page
+                  {option}
                 </option>
               ))}
             </select>
