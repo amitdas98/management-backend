@@ -164,7 +164,7 @@ export default function MembersTable() {
         <div className="flex flex-col gap-6 mb-6">
           <div className="flex items-center justify-between">
             <Typography variant="h5" color="blue-gray">
-              Guest List in table view
+              Guest list for Wedding
             </Typography>
             <Button
               size="sm"
