@@ -320,6 +320,21 @@ export default function MembersTable() {
                 value={editingItem.location || ""}
                 onChange={(e) => handleFieldChange("location", e.target.value)}
               />
+              <Input
+                label="Holud"
+                value={editingItem.holud || 0}
+                onChange={(e) => handleFieldChange("holud", e.target.value)}
+              />
+              <Input
+                label="Wedding"
+                value={editingItem.wedding || 0}
+                onChange={(e) => handleFieldChange("wedding", e.target.value)}
+              />
+              <Input
+                label="Name"
+                value={editingItem.reception || 0}
+                onChange={(e) => handleFieldChange("reception", e.target.value)}
+              />
               <Checkbox
                 label="Invited Holud"
                 checked={!!editingItem.invitedHolud}
