@@ -119,7 +119,7 @@ app.put("/update/card", async (req, res) => {
     }
 });
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', async (req, res) => {
     try {
     console.log('🔔 Webhook received!');
     console.log('Headers:', req.headers);
@@ -138,7 +138,7 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-app.get('/whastappMessages', (req, res) => {
+app.get('/whastappMessages', async (req, res) => {
     try {
     const query = req.body || {};
     const response = await whatsapp.find(query);
