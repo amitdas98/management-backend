@@ -108,6 +108,19 @@ app.put("/update/card", async (req, res) => {
     }
 });
 
+app.post('/webhook', (req, res) => {
+    try {
+    console.log('🔔 Webhook received!');
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+
+    // Respond to the webhook sender
+    res.status(200).send('Webhook received');
+    } catch (error){
+        console.log(`error in webhook`, error);
+    }
+});
+
 app.get("/health", (req, res) => {
     console.log("health check");
     res.status(200).json({ message: "Server is healthy" });
