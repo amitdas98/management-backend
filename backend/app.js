@@ -39,6 +39,17 @@ const cardSchema = new mongoose.Schema({
 
 const Card = mongoose.model("Guest", cardSchema); // Use 'Guest' to refer to the 'guests' collection
 
+const whatsappMessages = new mongoose.Schema({
+    event: { type: String },
+    sessionId: { type: String },
+    data: {
+        type: mongoose.Schema.Types.Mixed,
+    },
+    timestamp: {
+        type: Date
+    }
+});
+const whatsapp = mongoose.model("whatsapp", whatsappMessages); 
 // API Endpoints
 app.post("/getAllGuests", async (req, res) => {
     try {
@@ -113,11 +124,32 @@ app.post('/webhook', (req, res) => {
     console.log('🔔 Webhook received!');
     console.log('Headers:', req.headers);
     console.log('Body:', req.body);
-
+    const document = {
+        event: req?.body?.event,
+        sessionId: req?.body?.sessionId,
+        data: req?.body?.data,
+        timestamp: new Date(req?.body?.timestamp || Date.now())
+    };
+    await whatsapp.create(document);
     // Respond to the webhook sender
     res.status(200).send('Webhook received');
     } catch (error){
         console.log(`error in webhook`, error);
+    }
+});
+
+app.get('/whastappMessages', (req, res) => {
+    try {
+    const query = req.body || {};
+    const response = await whatsapp.find(query);
+    // Respond to the webhook sender
+    res.status(200).json(response);
+    } catch (error){
+        res.status(500).json({
+            message: "Failed to fetch messages",
+            error: error?.message,
+        });
+        console.log(`error in getting messages`, error);
     }
 });
 
